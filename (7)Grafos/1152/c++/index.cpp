@@ -2,8 +2,7 @@
 
 using namespace std;
 
-int graph1[2000][2000];
-
+int graph[2000][2000];
 int n, m;
 
 int gastoMi(int gasto);
@@ -16,12 +15,12 @@ int main() {
 		for (int i = 0; i < n; i++){
 			cin >> x >> y >> z;
 			gasto += z;
-			graph1[x][y] = z;
-			graph1[y][x] = z;
+			graph[x][y] = z;
+			graph[y][x] = z;
 		}
 		for (int i = 0; i < m; i++){
 			for (int j = 0; j < m; j++){
-				cout << graph1[i][j] << " ";
+				cout << graph[i][j] << " ";
 			}
 			cout << endl;
 		}
@@ -33,21 +32,17 @@ int main() {
 }
 
 int gastoMi(int gasto){
-	int salvaDados[m];
-	for(int i=0;i<m;i++){
-		salvaDados[i] = 0;
-	}
+	int salvaDados[m] = {};
+
 	for (int i = 0; i < m; i++){
 		for (int j = 0; j < m; j++){
-			if(graph1[i][j] != 0){
+			if(graph[i][j] != 0){
 				if(salvaDados[j] == 0){
-					salvaDados[j] = graph1[i][j];
+                    if(graph[i][j] != salvaDados[i])
+					    salvaDados[j] = graph[i][j];
 				}
-				else if(salvaDados[j] > graph1[i][j] ){
-					salvaDados[j] = graph1[i][j];
-				}
-				else if(salvaDados[i] > graph1[i][j]){
-					salvaDados[i] = graph1[i][j];
+				else if(salvaDados[j] > graph[i][j] ){
+					salvaDados[j] = graph[i][j];
 				}
 			}
 		}
