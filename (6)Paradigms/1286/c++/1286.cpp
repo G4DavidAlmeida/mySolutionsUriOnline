@@ -9,28 +9,24 @@ int main()
 
 	while(cin >> n >> pMax)
 	{
-		if(n==0)break;
+		if(n == 0)break;
 		int time[n], qp[n];
 
-		for(int i=0;i<n;i++)
-		{
+		for(int i=0; i < n; i++) {
 			cin >> time[i] >> qp[i];
 		}
-        cout << tmax(n,pMax,time,qp) << " min." << endl;
+        cout << tmax(n, pMax, time, qp) << " min." << endl;
 	}
 	return 0;
 }
-int tmax(int n,int pMax, int time[], int qp[])
-{
+int tmax(int n, int pMax, int time[], int qp[]) {
 	int i, j, temp1, temp2;
-	for(i=0;i<n; i++)
-		for(j=i+1;j<n;j++)
-		{
-			if (qp[i]>qp[j])
-			{
-                temp1=qp[i];temp2=time[i];
-				qp[i]=qp[j];time[i]=time[j];
-				qp[j]=temp1;time[j]=temp2;
+	for (i = 0; i < n; i++)
+		for (j=i+1; j<n; j++) {
+			if (qp[i] > qp[j]) {
+                temp1 = qp[i]; temp2 = time[i];
+				qp[i] = qp[j]; time[i] = time[j];
+				qp[j] = temp1; time[j] = temp2;
 			}
 			if(qp[i]==qp[j])
             {

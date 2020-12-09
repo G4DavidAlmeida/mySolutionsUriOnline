@@ -1,8 +1,12 @@
 #include<iostream>
+
 using namespace std;
+
 int main(){
 	int n=0, cost=0;
+
 	while(cin >> n){if(n==EOF || n == 0)break;
+	
 		int maxi=0;
 		cin >> cost;
 		int days[n];
